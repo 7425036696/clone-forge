@@ -5,14 +5,18 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
-const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" })
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+})
 
 export const metadata: Metadata = {
   title: {
     default: "CloneForge - AI Website Clone Generator & Editor",
     template: "%s | CloneForge",
   },
-  description: "Instantly clone any website URL, customize branding, edit content, and export production-ready code (React, Next.js, HTML/CSS). The ultimate AI web design tool.",
+  description:
+    "Instantly clone any website URL, customize branding, edit content, and export production-ready code (React, Next.js, HTML/CSS). The ultimate AI web design tool.",
   keywords: [
     "website cloner",
     "AI web designer",
@@ -23,7 +27,7 @@ export const metadata: Metadata = {
     "clone website design",
     "ai coding assistant",
     "web design automation",
-    "frontend generator"
+    "frontend generator",
   ],
   authors: [{ name: "CloneForge Team" }],
   creator: "CloneForge",
@@ -39,7 +43,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "CloneForge - AI Website Clone Generator",
-    description: "Transform any URL into editable code. Add your branding, logo, and export to React/Next.js in seconds.",
+    description:
+      "Transform any URL into editable code. Add your branding, logo, and export to React/Next.js in seconds.",
     url: "https://cloneforge.punyanshsingla.com/",
     siteName: "CloneForge",
     images: [
@@ -89,54 +94,67 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   other: {
-    'google-site-verification': 'SLEEaj0oSlsqTczyVzxphz791bot0WhFaP4qshxqCx4'
-  }
+    "google-site-verification": "SLEEaj0oSlsqTczyVzxphz791bot0WhFaP4qshxqCx4",
+  },
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VYJLSQJQQ8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      <head>
+        {/* Google Tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-VYJLSQJQQ8"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-VYJLSQJQQ8');
+            `,
+          }}
+        />
+      </head>
 
-  gtag('config', 'G-VYJLSQJQQ8');
-</script>
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebApplication",
-              "name": "CloneForge",
-              "applicationCategory": "DesignApplication",
-              "operatingSystem": "Web",
-              "offers": {
+              name: "CloneForge",
+              applicationCategory: "DesignApplication",
+              operatingSystem: "Web",
+              offers: {
                 "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD",
+                price: "0",
+                priceCurrency: "USD",
               },
-              "description":
+              description:
                 "AI-powered tool to clone, edit, and export websites as code. Transform any URL into editable React/Next.js code instantly.",
-              "featureList": "Website Cloning, Brand Customization, Code Export (React, Next.js, HTML), AI Design Analysis",
-              "screenshot": "https://www.cloneforge.com/og-image.png",
-              "softwareHelp": "https://www.cloneforge.com/docs",
-              "author": {
+              featureList:
+                "Website Cloning, Brand Customization, Code Export (React, Next.js, HTML), AI Design Analysis",
+              screenshot: "https://www.cloneforge.com/og-image.png",
+              softwareHelp: "https://www.cloneforge.com/docs",
+              author: {
                 "@type": "Organization",
-                "name": "CloneForge",
-                "url": "https://www.cloneforge.com",
+                name: "CloneForge",
+                url: "https://www.cloneforge.com",
               },
             }),
           }}
         />
+
         {children}
         <Analytics />
       </body>
