@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://www.cloneforge.com/sitemap.xml',
+    sitemap: 'https://cloneforge.punyanshsingla.com/sitemap.xml',
   }
 }
